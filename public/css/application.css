@@ -1,0 +1,28 @@
+svg {
+  position: relative;
+}
+
+#map{
+  width:auto;
+  height:400px;
+}
+
+path {
+  fill: #000;
+  fill-opacity: .2;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+path:hover {
+  fill: brown;
+  fill-opacity: .7;
+}
+
+.tooltip {
+  position: absolute;
+  padding:10px;
+  pointer-events: none;
+  color:steelblue;
+  background:white;
+}
