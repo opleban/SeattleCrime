@@ -3,6 +3,10 @@ if ($("#map").length){
   seattleMap.getCrimeData();
 }
 
+if ($("#overview-bar-chart").length){
+  var barChart = new OverviewChart();
+}
+
 $(".team-selection, .year-selection").change(function(){
   var team = $(".team-selection").find("option:selected").attr("value");
   var year = $(".year-selection").find("option:selected").attr("value");

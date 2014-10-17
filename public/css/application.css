@@ -5,6 +5,11 @@ svg {
   position: relative;
 }
 
+#overview-bar-chart{
+  margin:20px;
+  height:300px;
+}
+
 #map{
   height:400px;
   margin:auto;
@@ -50,4 +55,8 @@ header{
 .main-title{
   margin:10px;
   display:inline-block;
+}
+
+.nv-x text {
+    display: none;
 }
