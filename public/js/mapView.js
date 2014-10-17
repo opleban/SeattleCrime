@@ -8,14 +8,16 @@ MapController.prototype.getCrimeData = function(){
   d3.json("js/CenturyLinkCrime.json", function(collection){
     var markers = L.markerClusterGroup();
     collection.forEach(function(crime){
-      var marker = new L.marker([crime.incident_location.latitude,crime.incident_location.longitude], {at_scene_time:crime.at_scene_time, event_clearance_group: crime.event_clearance_group, event_clearance_subgroup: crime.event_clearance_subgroup, hundred_block_location: crime.hundred_block_location});
+      var marker = new L.marker([crime.incident_location.latitude,crime.incident_location.longitude], {at_scene_time:crime.at_scene_time, event_clearance_group: crime.event_clearance_group, event_clearance_subgroup: crime.event_clearance_subgroup, hundred_block_location: crime.hundred_block_location})
+        .bindPopup("<p>Location: " + crime.hundred_block_location + "<br/> Type: " + crime.event_clearance_subgroup + "<br/> Date: " + crime.at_scene_time + "</p>");
       markers.addLayer(marker);
-      marker.on("click", function(){
-      })
+
     });
     map.addLayer(markers);
   });
 };
+
+//This function is not currently used. Before, I had the idea of mapping crime based on the census tract, however the census tracts were too large relative to the area around CenturyLink Field, and did not provide enough variation for a significant comparison.
 
 MapController.prototype.overlayCensusTractPane = function(){
   var map = this.map;

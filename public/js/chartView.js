@@ -6,7 +6,8 @@ function OverviewChart(){
       .staggerLabels(true)
       .tooltips(true)
       .showValues(false)
-      .transitionDuration(350);
+      .transitionDuration(350)
+      .margin({top: 10, right: 10, bottom: 10, left: 40});
 
     chart.xAxis.axisLabel("Types of Crimes");
     d3.select("#overview-bar-chart").append("svg");

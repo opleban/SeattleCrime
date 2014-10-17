@@ -11,6 +11,7 @@ class SODAQuery
     response = seattle_crime_client.get("3k2p-39jp", { "$where" => "within_circle(incident_location, 47.595941, -122.331515, #{MILE_IN_METERS})"})
   end
 
+#I couldn't get this query working. I was trying to query all incidences of crimes around CenturyLink Stadium on a specific day.
   def get_crime_data_by_date(date)
     response = seattle_crime_client.get("3k2p-39jp", {$where => "within_circle(incident_location, 47.595941, -122.331515, #{MILE_IN_METERS}) AND date_trunc_ymd(at_scene_time)=date_trunc_ymd(#{date})"});
   end

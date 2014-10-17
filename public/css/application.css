@@ -10,6 +10,11 @@ svg {
   height:300px;
 }
 
+.data-overview{
+  margin:20px 0;
+  background-color:#656565;
+}
+
 #map{
   height:400px;
   margin:auto;
@@ -41,6 +46,9 @@ header{
   margin-bottom:20px;
 }
 
+.explainer{
+}
+
 .team-selection{
   width: auto;
   margin:10px;
@@ -59,4 +67,8 @@ header{
 
 .nv-x text {
     display: none;
+}
+
+.tick line {
+  display: none;
 }
