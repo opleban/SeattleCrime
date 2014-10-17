@@ -27,7 +27,7 @@ function getGames(team, year){
 }
 
 function getCrimeData(game){
-  d3.json("js/crimes.json?date=" + game.scheduled, function(collection){
+  d3.json("/crimes.json?date=" + game.scheduled, function(collection){
     console.log(collection);
   });
 }
