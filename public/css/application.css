@@ -10,6 +10,10 @@ svg {
   height:300px;
 }
 
+.chart-title{
+  color:white;
+}
+
 .data-overview{
   margin:20px 0;
   background-color:#656565;
