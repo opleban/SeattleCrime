@@ -1,3 +1,4 @@
+# The extractor I used to pull out the Seahawks home game schedule.
 require "json"
 json = File.read('NFL2014.json')
 games = JSON.parse(json)
