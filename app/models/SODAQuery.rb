@@ -1,4 +1,5 @@
 class SODAQuery
+  MILE_IN_METERS = 1610
   attr_reader :seattle_crime_client
 
   def initialize
@@ -6,7 +7,6 @@ class SODAQuery
   end
 
   def get_CenturyLink_data
-    MILE_IN_METERS = 1610
-    response = seattle_crime_client.get("3k2p-39jp", { "$where" => "within_circle(incident_location, 47.595941, -122.331515, #{MILE_IN_METERS)}"})
+    response = seattle_crime_client.get("3k2p-39jp", {"$where" => "within_circle(incident_location, 47.595941, -122.331515, #{MILE_IN_METERS}) AND event_clearance_date IS NOT NULL", "$order" => "event_clearance_date DESC"})
   end
 end
