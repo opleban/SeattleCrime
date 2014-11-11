@@ -1,5 +1,5 @@
 if ($("#map").length){
-  var map = new MapController();
+  var map = new SeattleMap();
   DataFetcher.getMapData(map.draw.bind(map));
 }
 

@@ -1,11 +1,11 @@
-var MapController = function(){
+var SeattleMap = function(){
   var that = this;
   that.map = L.map("map", {center:[47.595372, -122.331363], zoom:14})
              .addLayer(new L.TileLayer("http://{s}.tiles.mapbox.com/v3/opleban.j9f7bfle/{z}/{x}/{y}.png"));
   that.markers = L.markerClusterGroup();
 };
 
-MapController.prototype.draw = function(data){
+SeattleMap.prototype.draw = function(data){
   var that = this;
   that.markers.clearLayers();
   data.forEach(function(crime){
@@ -16,7 +16,7 @@ MapController.prototype.draw = function(data){
   that.map.addLayer(that.markers);
 };
 
-MapController.prototype.clear = function(){
+SeattleMap.prototype.clear = function(){
   var that = this;
   that.markers.clearLayers();
 }
