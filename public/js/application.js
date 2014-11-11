@@ -1,37 +1,33 @@
 if ($("#map").length){
-  var seattleMap = new MapController();
-  seattleMap.getCrimeData();
+  var map = new MapController();
+  DataFetcher.getMapData(map.draw.bind(map));
 }
 
 if ($("#overview-bar-chart").length){
-  var barChart = new OverviewChart();
+  var chart = new OverviewChart();
+  DataFetcher.getChartData(chart.draw.bind(chart));
 }
 
 $(".team-selection, .year-selection").change(function(){
   var team = $(".team-selection").find("option:selected").attr("value");
   var year = $(".year-selection").find("option:selected").attr("value");
   if (team && year){
-    var games = getGames(team, year);
+    var games = getGame(team, year);
   }
 });
 
-function getGames(team, year){
-  d3.json("js/NFL" + year + ".json", function(collection){
-    var games = [];
-    collection.forEach(function(game){
-      if (game.away == team){
-        games.push(game);
+function getGame(team, year){
+  var noGamesFound = true;
+  d3.json("js/NFL" + year + ".json", function(data){
+    data.forEach(function(game){
+      if (game.away === team){
+        noGamesFound = false;
+        return DataFetcher.getMapData(map.draw.bind(map), game.scheduled);
       }
     });
-    if (games.length){
-    //for now I'm just getting crime data for an indidivudal game, to simplify my SoQL query
-      getCrimeData(games[0]);
+    if (noGamesFound){
+      map.clear();
+      alert("No games found!");
     }
-  });
-}
-
-function getCrimeData(game){
-  d3.json("/crimes.json?date=" + game.scheduled, function(collection){
-    console.log(collection);
   });
 }
